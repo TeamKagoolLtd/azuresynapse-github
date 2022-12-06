@@ -1,0 +1,17 @@
+on: [push]
+jobs:
+  build:
+    runs-on: [self-hosted, Windows, X64]
+    steps:
+    - uses: Azure/synapse-workspace-deployment
+            with:
+              TargetWorkspaceName: 'targetworkspace'
+              TemplateFile: './TemplateForWorkspace.json'
+              ParametersFile: './TemplateParametersForWorkspace.json'
+              environment: 'Azure Public'
+              resourceGroup: 'myresourcegroup'
+              clientId: ${{ secrets.CLIENTID }}
+              clientSecret: ${{ secrets.CLIENTSECRET }}
+              subscriptionId: ${{ secrets.SUBID }}
+              tenantId: ${{ secrets.TENANTID }}
+              operation: 'deploy'
