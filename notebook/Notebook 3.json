@@ -1,0 +1,64 @@
+{
+	"name": "Notebook 3",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "2baddce5-fce0-403b-a51f-d7ec8b2b3218"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "python"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql import SparkSession \r\n",
+					"from pyspark.sql.types import * \r\n",
+					"\r\n",
+					"# Primary storage info \r\n",
+					"account_name = 'Your primary storage account name' # fill in your primary account name \r\n",
+					"container_name = 'Your container name' # fill in your container name \r\n",
+					"relative_path = 'Your relative path' # fill in your relative folder path \r\n",
+					"\r\n",
+					"adls_path = 'abfss://%s@%s.dfs.core.windows.net/%s' % (container_name, account_name, relative_path) \r\n",
+					"print('Primary storage account path: ' + adls_path) \r\n",
+					"\r\n",
+					"data = spark.range(5,10) \r\n",
+					"\r\n",
+					"# Write spark dataframe as a csv file \r\n",
+					"csv_path = adls_path + 'Your file name ' \r\n",
+					"data.write.csv(csv_path, mode = 'overwrite', header = 'true') \r\n",
+					"\r\n",
+					"# Write spark dataframe as a parquet file \r\n",
+					"parquet_path = adls_path + ' Your file name ' \r\n",
+					"data.write.parquet(parquet_path, mode = 'overwrite') \r\n",
+					"\r\n",
+					"# Write spark dataframe as a json file \r\n",
+					"json_path = adls_path + 'Your file name ' \r\n",
+					"data.write.json(json_path, mode = 'overwrite')"
+				]
+			}
+		]
+	}
+}
