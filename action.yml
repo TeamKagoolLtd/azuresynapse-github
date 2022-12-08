@@ -1,0 +1,40 @@
+name: 'Synapse workspace deployment'
+description: 'Use this GitHub action to deploy synapse workspace.'
+inputs:
+  TargetWorkspaceName:
+    description: 'synw-poc-esu2-02'
+    required: true
+  TemplateFile:
+    description: './synw-poc-esu2-01/TemplateForWorkspace.json'
+    required: true
+  ParametersFile:
+    description: './synw-poc-esu2-01/TemplateParametersForWorkspace.json'
+    required: true
+  OverrideArmParameters:
+    description: 'Specify deployment parameter values.'
+    default: ''
+    required: false
+  Environment:
+    description: 'Azure Public'
+    required: true
+  resourceGroup:
+    description: 'rg-kdevops-prod'
+    required: true
+  clientId:
+    description: '6931159e-2670-4ed1-9ccb-8ee9769ae42c'
+    required: false
+  clientSecret:
+    description: 'f4T7Q~H8iwaCYPS.ys5COFBV5TaUAePhTkQMj'
+    required: false
+  subscriptionId:
+    description: 'eb5a257a-76e2-472d-9fdc-7f9b3172fcf6'
+    required: true
+  tenantId:
+    description: '82583032-c12a-4a39-a1b7-a28b18bccc03'
+    required: false
+  operation:
+    description: 'Provide name of the operation.'
+    required: true
+runs:
+  using: 'node12'
+  main: './dist/index.js'
