@@ -3,15 +3,15 @@ jobs:
   build:
     runs-on: [self-hosted, Windows, X64]
     steps:
-    - uses: Azure/synapse-workspace-deployment
-            with:
-              TargetWorkspaceName: 'targetworkspace'
-              TemplateFile: './TemplateForWorkspace.json'
-              ParametersFile: './TemplateParametersForWorkspace.json'
-              environment: 'Azure Public'
-              resourceGroup: 'myresourcegroup'
-              clientId: ${{ secrets.CLIENTID }}
-              clientSecret: ${{ secrets.CLIENTSECRET }}
-              subscriptionId: ${{ secrets.SUBID }}
-              tenantId: ${{ secrets.TENANTID }}
-              operation: 'deploy'
+    - uses: Azure/Synapse-workspace-deployment@V1.7.0
+      with:
+        TargetWorkspaceName: 'synw-poc-esu2-02'
+        TemplateFile: './synw-poc-esu2-01/TemplateForWorkspace.json'
+        ParametersFile: './synw-poc-esu2-01/TemplateParametersForWorkspace.json'
+        environment: 'Azure Public'
+        resourceGroup: 'rg-kdevops-prod'
+        clientId: ${{ secrets.CLIENTID }}
+        clientSecret: ${{ secrets.CLIENTSECRET }}
+        subscriptionId: ${{ secrets.SUBID }}
+        tenantId: ${{ secrets.TENANTID }}
+        operation: 'deploy'
