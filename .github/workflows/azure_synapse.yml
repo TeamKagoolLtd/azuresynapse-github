@@ -11,7 +11,7 @@ jobs:
       with:
         TargetWorkspaceName: ${{ secrets.KGL_DEVOPS_PROD_SYNAPSENAME }}
         TemplateFile: ./synw-poc-esu2-01/TemplateForWorkspace.json
-        ParametersFile: ./synw-poc-esu2-01/TemplateParametersForWorkspace.json.json
+        ParametersFile: ./synw-poc-esu2-01/TemplateParametersForWorkspace.json
         environment: 'Azure Public'
         resourceGroup: ${{ secrets.KGL_DEVOPS_PROD_RGNAME }}
         clientId: ${{ secrets.KGL_DEVOPS_PROD_CLIENTID }}
