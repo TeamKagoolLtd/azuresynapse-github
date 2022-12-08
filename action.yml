@@ -5,10 +5,10 @@ inputs:
     description: 'synw-poc-esu2-02'
     required: true
   TemplateFile:
-    description: './synw-poc-esu2-01/TemplateForWorkspace.json'
+    description: /synw-poc-esu2-01/TemplateForWorkspace.json
     required: true
   ParametersFile:
-    description: './synw-poc-esu2-01/TemplateParametersForWorkspace.json'
+    description: /synw-poc-esu2-01/TemplateParametersForWorkspace.json
     required: true
   OverrideArmParameters:
     description: 'Specify deployment parameter values.'
