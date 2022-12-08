@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: [self-hosted, Windows, X64]
     steps:
+    - uses: actions/checkout@v1
     - uses: Azure/Synapse-workspace-deployment@V1.7.0
       with:
         TargetWorkspaceName: ${{ secrets.KGL_DEVOPS_PROD_SYNAPSENAME }}
