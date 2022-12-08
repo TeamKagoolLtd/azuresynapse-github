@@ -5,13 +5,13 @@ jobs:
     steps:
     - uses: Azure/Synapse-workspace-deployment@V1.7.0
       with:
-        TargetWorkspaceName: 'synw-poc-esu2-02'
+        TargetWorkspaceName: ${{ secrets.KGL_DEVOPS_PROD_SYNAPSENAME }}
         TemplateFile: './synw-poc-esu2-01/TemplateForWorkspace.json'
         ParametersFile: './synw-poc-esu2-01/TemplateParametersForWorkspace.json'
         environment: 'Azure Public'
-        resourceGroup: 'rg-kdevops-prod'
-        clientId: ${{ secrets.CLIENTID }}
-        clientSecret: ${{ secrets.CLIENTSECRET }}
-        subscriptionId: ${{ secrets.SUBID }}
-        tenantId: ${{ secrets.TENANTID }}
+        resourceGroup: ${{ secrets.KGL_DEVOPS_PROD_RGNAME }}
+        clientId: ${{ secrets.KGL_DEVOPS_PROD_CLIENTID }}
+        clientSecret: ${{ secrets.KGL_DEVOPS_PROD_SECRETKEY }}
+        subscriptionId: ${{ secrets.KGL_DEVOPS_PROD_SUBCRIPTIONID }}
+        tenantId: ${{ secrets.KGL_DEVOPS_PROD_TENANTID }}
         operation: 'deploy'
