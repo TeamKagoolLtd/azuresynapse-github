@@ -9,8 +9,8 @@ jobs:
     - uses: Azure/Synapse-workspace-deployment@V1.7.0
       with:
         TargetWorkspaceName: ${{ secrets.KGL_DEVOPS_PROD_SYNAPSENAME }}
-        TemplateFile: ./synw-poc-esu2-01/TemplateForWorkspace.json
-        ParametersFile: ./synw-poc-esu2-01/TemplateParametersForWorkspace.json
+        TemplateFile: './TemplateForWorkspace.json'
+        ParametersFile: ./TemplateParametersForWorkspace.json'
         environment: 'Azure Public'
         resourceGroup: ${{ secrets.KGL_DEVOPS_PROD_RGNAME }}
         clientId: ${{ secrets.KGL_DEVOPS_PROD_CLIENTID }}
